@@ -1,6 +1,7 @@
 package com.Skilldistillery.foodtruck.app;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import com.Skilldistillery.foodtruck.entities.FoodTruck;
@@ -26,23 +27,26 @@ public class FoodTruckApp {
 		sc.close();
 
 	}
+
 	public FoodTruck[] getFoodTruckInfo(Scanner sc) {
 		String foodType = "";
 		double rating = 0;
-		System.out.println("How many food trucks do you want to enter?");
-		int ix = sc.nextInt();
-		sc.nextLine();
-
-		FoodTruck[] fleet = new FoodTruck[ix];
+//		System.out.println("How many food trucks do you want to enter?");
+//		int ix = sc.nextInt();
+//		sc.nextLine();
+//
+//		FoodTruck[] fleet = new FoodTruck[ix];   /<---origionally allowed user to establish length
+		FoodTruck[] fleet = new FoodTruck[5];
 		for (int i = 0; i < fleet.length; i++) {
-			System.out.println("Enter " + ix + " names or \"quit\" to stop entering trucks:");
-			ix--;
+			System.out.println("Enter " + " names or \"quit\" to stop entering trucks:");
+//			ix--;
 			String truckName = sc.nextLine();
 //If the user inputs quit for the food truck name, input ends immediately and the program continues.
 			if (truckName.equalsIgnoreCase("quit")) {
-				FoodTruck[] exitArr = Arrays.copyOf(fleet, i);// <----if user quits return the current copy of the []
+//				FoodTruck[] exitArr = Arrays.copyOf(fleet, i);// <----if user quits return the current copy of the []
+				FoodTruck[] exitArr = copyFleet(fleet);
 				return exitArr;
-
+//Arrays.copyOf() copies the specified array by truncating the remaing length
 			} else {
 				System.out.println("Enter type of food:");
 				foodType = sc.nextLine();
@@ -60,7 +64,7 @@ public class FoodTruckApp {
 				fleet[i].setName(truckName);
 				fleet[i].setFoodType(foodType);
 				fleet[i].setRating(rating);
-				fleet[i].setId(ix);
+				fleet[i].setId(i + 1);
 			}
 		}
 		return fleet;
@@ -94,6 +98,7 @@ public class FoodTruckApp {
 			displayTruckInfo(fleet);
 			break;
 		case 2:
+
 			displayHighestRated(fleet);
 			break;
 		case 3:
@@ -149,9 +154,40 @@ public class FoodTruckApp {
 			totalRatings += fleet[i].getRating();
 		}
 		double avg = totalRatings / fleet.length * 1.0;
-//		double showAvg = Math.round(avg * 10; // <--round for readability
-		System.out.printf("the Average is " + "%,.2f", + avg);
+		System.out.printf("the Average is " + "%,.2f", +avg);
 
 	}
 
+	public FoodTruck[] copyFleet(FoodTruck[] fleet) {
+		FoodTruck[] copyFleet = new FoodTruck[getArrayLength(fleet)];
+		for (int i = 0; i < copyFleet.length; i++) {
+			if (fleet[i] != null) {
+				copyFleet[i] = fleet[i];
+			}
+		}
+		return copyFleet;
+	}
+	
+	public int getArrayLength(FoodTruck[] fleet) {
+		int counter = 0;
+		for (int i = 0; i < fleet.length; i++) {
+			if (fleet[i] != null) {
+				counter++;
+			}			
+		}
+		return counter;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
+

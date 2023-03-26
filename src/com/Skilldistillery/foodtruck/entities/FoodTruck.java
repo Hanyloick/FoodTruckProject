@@ -5,7 +5,7 @@ public class FoodTruck {
 	private String foodType;
 	private double rating;
 	private int ID;
-	private static int nextID;
+	private static int nextID = 111900;
 //constructors
 	public FoodTruck() {
 

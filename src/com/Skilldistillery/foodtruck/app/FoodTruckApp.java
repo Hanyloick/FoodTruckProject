@@ -7,7 +7,6 @@ import com.Skilldistillery.foodtruck.entities.FoodTruck;
 
 public class FoodTruckApp {
 	// array of food trucks for up to 5 trucks
-	private FoodTruck[] fleet;
 
 	public static void main(String[] args) {
 		FoodTruckApp fta = new FoodTruckApp();
@@ -17,11 +16,12 @@ public class FoodTruckApp {
 	public void run(FoodTruckApp fta) {
 		Scanner sc = new Scanner(System.in);
 		boolean quit = true;
+		FoodTruck[] fleet = getFoodTruckInfo(sc);
 		System.out.println("Please enter information for your trucks");
-		getFoodTruckInfo(sc);
+
 		while (quit) {
 
-			fta.displayMenu();
+			fta.displayMenu(sc);
 			quit = fta.userChoice(sc, fleet);
 		}
 		sc.close();
@@ -39,7 +39,6 @@ public class FoodTruckApp {
 		sc.nextLine();
 
 		FoodTruck[] fleet = new FoodTruck[ix];
-
 		for (int i = 0; i < fleet.length; i++) {
 			System.out.println("Enter " + ix + " names or \"quit\" to stop entering trucks:");
 			ix--;
@@ -66,13 +65,13 @@ public class FoodTruckApp {
 				fleet[i].setName(truckName);
 				fleet[i].setFoodType(foodType);
 				fleet[i].setRating(rating);
-				fleet[i].getId();
+				fleet[i].setId(ix);
 			}
 		}
 		return fleet;
 
 	}
-	
+
 //	After input is complete, the user sees a menu from which they can choose to:
 //
 //		List all existing food trucks.
@@ -80,13 +79,14 @@ public class FoodTruckApp {
 //		Display the highest-rated food truck.
 //		Quit the program.
 
-
-	public void displayMenu() {
+	public void displayMenu(Scanner sc) {
+		System.out.println();
 		System.out.println("enter 1-4");
 		System.out.println("1. show the fleet");
 		System.out.println("2. show the best truck");
 		System.out.println("3. show the average rating");
 		System.out.println("4. you quitter -_-");
+		System.out.println();
 	}
 
 	public boolean userChoice(Scanner sc, FoodTruck[] fleet) {
@@ -94,24 +94,22 @@ public class FoodTruckApp {
 		int input;
 		do {
 			System.out.println("Enter your selection (1-4): ");
-			 input = sc.nextInt();
+			input = sc.nextInt();
 
 			if (input < 1 || input > 4) {
 				System.out.println("Your selection was out of range. Please try again.");
 			}
-		} while (input >= 4 || input <= 1);
-
-		
+		} while (input > 4 || input < 1);
 
 		switch (input) {
 		case 1:
 			displayTruckInfo(fleet);
 			break;
 		case 2:
-			displayAverageRating(fleet);
+			displayHighestRated(fleet);
 			break;
 		case 3:
-			displayHighestRated(fleet);
+			displayAverageRating(fleet);
 			break;
 		case 4:
 			System.out.println("Thank you");
@@ -134,7 +132,7 @@ public class FoodTruckApp {
 			totalRatings += fleet[i].getRating();
 		}
 		double avg = totalRatings / fleet.length * 1.0;
-		double showAvg = Math.round(avg) * 100 / 100; // <--round for readability
+		double showAvg = avg * 100 / 100; // <--round for readability
 		System.out.println("the Average is " + showAvg);
 
 	}
@@ -142,7 +140,7 @@ public class FoodTruckApp {
 	public void displayHighestRated(FoodTruck[] fleet) {
 		double highestRating = fleet[0].getRating(); // <----initialized to the rating of index 0
 
-		for (int i = 9; i < fleet.length; i++) {
+		for (int i = 0; i < fleet.length; i++) {
 			if (fleet[i].getRating() > highestRating) { // compare that value to the array
 				highestRating = fleet[i].getRating(); // reassign when a higher value is found
 
@@ -150,6 +148,7 @@ public class FoodTruckApp {
 		}
 		int counter = 0;
 		for (int i = 0; i < fleet.length; i++) { // <---counter variable in case of no winners
+			if (highestRating == fleet[i].getRating())
 			counter++;
 		}
 

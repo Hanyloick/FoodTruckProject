@@ -81,7 +81,7 @@ public class FoodTruckApp {
 
 		int input;
 		do {
-			System.out.println("Enter your selection (1-4): ");
+			System.out.println("enter 1-4): ");
 			input = sc.nextInt();
 
 			if (input < 1 || input > 4) {
@@ -149,8 +149,8 @@ public class FoodTruckApp {
 			totalRatings += fleet[i].getRating();
 		}
 		double avg = totalRatings / fleet.length * 1.0;
-		double showAvg = avg * 100 / 100; // <--round for readability
-		System.out.println("the Average is " + showAvg);
+//		double showAvg = Math.round(avg * 10; // <--round for readability
+		System.out.printf("the Average is " + "s%,.2f", + avg);
 
 	}
 

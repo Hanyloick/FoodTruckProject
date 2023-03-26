@@ -6,7 +6,6 @@ import java.util.Scanner;
 import com.Skilldistillery.foodtruck.entities.FoodTruck;
 
 public class FoodTruckApp {
-	// array of food trucks for up to 5 trucks
 
 	public static void main(String[] args) {
 		FoodTruckApp fta = new FoodTruckApp();
@@ -27,10 +26,6 @@ public class FoodTruckApp {
 		sc.close();
 
 	}
-
-//	The user is prompted to input the name, food type, and rating for up to five food trucks. For each set of input, a FoodTruck object is created, 
-//	its fields set to the user's input, and it is added to the array. The truck id is not input by the user, 
-//	but instead assigned automatically in the FoodTruck constructor from a static field that is incremented as each truck is created.
 	public FoodTruck[] getFoodTruckInfo(Scanner sc) {
 		String foodType = "";
 		double rating = 0;
@@ -71,13 +66,6 @@ public class FoodTruckApp {
 		return fleet;
 
 	}
-
-//	After input is complete, the user sees a menu from which they can choose to:
-//
-//		List all existing food trucks.
-//		See the average rating of food trucks.
-//		Display the highest-rated food truck.
-//		Quit the program.
 
 	public void displayMenu(Scanner sc) {
 		System.out.println();
@@ -126,17 +114,6 @@ public class FoodTruckApp {
 
 	}
 
-	public void displayAverageRating(FoodTruck[] fleet) {
-		double totalRatings = 0;
-		for (int i = 0; i < fleet.length; i++) {
-			totalRatings += fleet[i].getRating();
-		}
-		double avg = totalRatings / fleet.length * 1.0;
-		double showAvg = avg * 100 / 100; // <--round for readability
-		System.out.println("the Average is " + showAvg);
-
-	}
-
 	public void displayHighestRated(FoodTruck[] fleet) {
 		double highestRating = fleet[0].getRating(); // <----initialized to the rating of index 0
 
@@ -149,7 +126,7 @@ public class FoodTruckApp {
 		int counter = 0;
 		for (int i = 0; i < fleet.length; i++) { // <---counter variable in case of no winners
 			if (highestRating == fleet[i].getRating())
-			counter++;
+				counter++;
 		}
 
 		if (counter > 1) { // if counter > 0 there's no winners
@@ -163,6 +140,17 @@ public class FoodTruckApp {
 				System.out.println(fleet[i].toString());
 			}
 		}
+
+	}
+
+	public void displayAverageRating(FoodTruck[] fleet) {
+		double totalRatings = 0;
+		for (int i = 0; i < fleet.length; i++) {
+			totalRatings += fleet[i].getRating();
+		}
+		double avg = totalRatings / fleet.length * 1.0;
+		double showAvg = avg * 100 / 100; // <--round for readability
+		System.out.println("the Average is " + showAvg);
 
 	}
 

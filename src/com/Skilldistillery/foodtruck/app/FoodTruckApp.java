@@ -150,7 +150,7 @@ public class FoodTruckApp {
 		}
 		double avg = totalRatings / fleet.length * 1.0;
 //		double showAvg = Math.round(avg * 10; // <--round for readability
-		System.out.printf("the Average is " + "s%,.2f", + avg);
+		System.out.printf("the Average is " + "%,.2f", + avg);
 
 	}
 

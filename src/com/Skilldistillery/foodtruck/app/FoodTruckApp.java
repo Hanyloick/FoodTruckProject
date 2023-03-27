@@ -30,16 +30,9 @@ public class FoodTruckApp {
 
 	public FoodTruck[] getFoodTruckInfo(Scanner sc) {
 		double rating = 0;
-//		System.out.println("How many food trucks do you want to enter?");
-//		int ix = sc.nextInt();
-//		sc.nextLine();
-//
-//		FoodTruck[] fleet = new FoodTruck[ix];   /<---origionally allowed user to establish length
-		//but feared it wasn't meeting the requirement.
 		FoodTruck[] fleet = new FoodTruck[5];
 		for (int i = 0; i < fleet.length; i++) {
 			System.out.println("Enter names or \"quit\" to stop entering trucks:");
-//			ix--;
 			String truckName = sc.nextLine();
 //If the user inputs quit for the food truck name, input ends immediately and the program continues.
 			if (truckName.equalsIgnoreCase("quit")) {

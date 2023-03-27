@@ -29,8 +29,9 @@ or end the program.
 -creating objects utilizing constructors and getters<br>
 -using toString<br>
 -arrays! figuring out how to deal with arrays with null values<br>
-was a journey! got help from my buddy Array.copyOf()<br>
--not getting cought in the snooker loop!<br>
+was a journey, i learned how to use, Array.copyOf() and what it does<br>
+also how to mimic Array.copyOf by using my own methods. 
+-using loops and making sure i always have a condition to break out of it.<br>
 -this lesson really helped with working with loops and iterations<br>
 -during my journey i've also discovered helper methods<br> 
 

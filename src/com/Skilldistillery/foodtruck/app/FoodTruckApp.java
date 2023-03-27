@@ -64,7 +64,7 @@ public class FoodTruckApp {
 				fleet[i].setName(truckName);
 				fleet[i].setFoodType(foodType);
 				fleet[i].setRating(rating);
-				fleet[i].setId(i + 1);
+				fleet[i].setId(i);
 			}
 		}
 		return fleet;

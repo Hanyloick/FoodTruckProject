@@ -15,14 +15,14 @@ public class FoodTruckApp {
 
 	public void run(FoodTruckApp fta) {
 		Scanner sc = new Scanner(System.in);
-		boolean quit = true;
+		boolean on = true;
 		FoodTruck[] fleet = getFoodTruckInfo(sc);
 		System.out.println("Please enter information for your trucks");
 
-		while (quit) {
+		while (on) {
 
 			fta.displayMenu(sc);
-			quit = fta.userChoice(sc, fleet);
+			on = fta.userChoice(sc, fleet);
 		}
 		sc.close();
 
@@ -43,9 +43,9 @@ public class FoodTruckApp {
 			String truckName = sc.nextLine();
 //If the user inputs quit for the food truck name, input ends immediately and the program continues.
 			if (truckName.equalsIgnoreCase("quit")) {
+				FoodTruck[] exitArr = copyFleet(fleet);
 //				FoodTruck[] exitArr = Arrays.copyOf(fleet, i);// <----if user quits return the current copy of the []
 				//Arrays.copyOf() copies the specified array by truncating the remaing length
-				FoodTruck[] exitArr = copyFleet(fleet);
 				return exitArr;
 			} else {
 				System.out.println("Enter type of food:");
@@ -114,7 +114,7 @@ public class FoodTruckApp {
 
 	public void displayTruckInfo(FoodTruck[] fleet) {
 		for (int i = 0; i < fleet.length; i++) {
-			System.out.println(fleet[i].toString());
+			System.out.println(fleet[i]);
 		}
 
 	}
@@ -142,7 +142,7 @@ public class FoodTruckApp {
 
 		for (int i = 0; i < fleet.length; i++) { // find any matches
 			if (highestRating == fleet[i].getRating()) {
-				System.out.println(fleet[i].toString());
+				System.out.println(fleet[i]);
 			}
 		}
 

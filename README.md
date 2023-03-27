@@ -29,3 +29,7 @@ or end the program.
 was a journey! got help from my buddy Array.copyOf()<br>
 -not getting cought in the snooker loop!<br>
 -this lesson really helped with working with loops and iterations<br>
+-during my journey i've also discovered helper methods<br> 
+
+
+

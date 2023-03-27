@@ -36,26 +36,27 @@ public class FoodTruckApp {
 //		sc.nextLine();
 //
 //		FoodTruck[] fleet = new FoodTruck[ix];   /<---origionally allowed user to establish length
+		//but feared it wasn't meeting the requirement.
 		FoodTruck[] fleet = new FoodTruck[5];
 		for (int i = 0; i < fleet.length; i++) {
-			System.out.println("Enter " + " names or \"quit\" to stop entering trucks:");
+			System.out.println("Enter names or \"quit\" to stop entering trucks:");
 //			ix--;
 			String truckName = sc.nextLine();
 //If the user inputs quit for the food truck name, input ends immediately and the program continues.
 			if (truckName.equalsIgnoreCase("quit")) {
 //				FoodTruck[] exitArr = Arrays.copyOf(fleet, i);// <----if user quits return the current copy of the []
+				//Arrays.copyOf() copies the specified array by truncating the remaing length
 				FoodTruck[] exitArr = copyFleet(fleet);
 				return exitArr;
-//Arrays.copyOf() copies the specified array by truncating the remaing length
 			} else {
 				System.out.println("Enter type of food:");
 				foodType = sc.nextLine();
 
 				do {
-					System.out.println("Enter rating \"0-5\"):");
+					System.out.println("Enter rating \"0-5\"");
 					rating = sc.nextDouble();
 					if (rating > 5 || rating < 0) {
-						System.out.println("out of range. try again.");
+						System.out.println("Out of range. Try again.");
 					}
 				} while (rating > 5 || rating < 0);
 				sc.nextLine();
@@ -74,10 +75,10 @@ public class FoodTruckApp {
 	public void displayMenu(Scanner sc) {
 		System.out.println();
 		System.out.println("enter 1-4");
-		System.out.println("1. show the fleet");
-		System.out.println("2. show the best truck");
-		System.out.println("3. show the average rating");
-		System.out.println("4. you quitter -_-");
+		System.out.println("1. Show the fleet");
+		System.out.println("2. Show the best truck");
+		System.out.println("3. Show the average rating");
+		System.out.println("4. You quitter -_-");
 		System.out.println();
 	}
 
@@ -85,11 +86,11 @@ public class FoodTruckApp {
 
 		int input;
 		do {
-			System.out.println("enter 1-4): ");
+			System.out.println("Enter 1-4");
 			input = sc.nextInt();
 
 			if (input < 1 || input > 4) {
-				System.out.println("Your selection was out of range. Please try again.");
+				System.out.println("Out of range. Please try again.");
 			}
 		} while (input > 4 || input < 1);
 
@@ -105,7 +106,7 @@ public class FoodTruckApp {
 			displayAverageRating(fleet);
 			break;
 		case 4:
-			System.out.println("Thank you");
+			System.out.println("Thank you!");
 			return false;
 		}
 
@@ -135,9 +136,9 @@ public class FoodTruckApp {
 		}
 
 		if (counter > 1) { // if counter > 0 there's no winners
-			System.out.println(counter + "tied for 1st");
+			System.out.println(counter + "Tied for 1st");
 		} else {
-			System.out.println("the best is: ");
+			System.out.println("The best is: ");
 		}
 
 		for (int i = 0; i < fleet.length; i++) { // find any matches
@@ -153,8 +154,8 @@ public class FoodTruckApp {
 		for (int i = 0; i < fleet.length; i++) {
 			totalRatings += fleet[i].getRating();
 		}
-		double avg = totalRatings / fleet.length * 1.0;
-		System.out.printf("the Average is " + "%,.2f", +avg);
+		double avg = totalRatings / fleet.length;
+		System.out.printf("The Average is " + "%,.2f", +avg);
 
 	}
 
@@ -167,27 +168,15 @@ public class FoodTruckApp {
 		}
 		return copyFleet;
 	}
-	
+
 	public int getArrayLength(FoodTruck[] fleet) {
 		int counter = 0;
 		for (int i = 0; i < fleet.length; i++) {
 			if (fleet[i] != null) {
 				counter++;
-			}			
+			}
 		}
 		return counter;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
 
+}

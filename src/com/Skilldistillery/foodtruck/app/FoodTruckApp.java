@@ -1,7 +1,7 @@
 package com.Skilldistillery.foodtruck.app;
 
-import java.util.Arrays;
-import java.util.Iterator;
+//import java.util.Arrays;
+//import java.util.Iterator;
 import java.util.Scanner;
 
 import com.Skilldistillery.foodtruck.entities.FoodTruck;
@@ -29,7 +29,6 @@ public class FoodTruckApp {
 	}
 
 	public FoodTruck[] getFoodTruckInfo(Scanner sc) {
-		String foodType = "";
 		double rating = 0;
 //		System.out.println("How many food trucks do you want to enter?");
 //		int ix = sc.nextInt();
@@ -50,7 +49,7 @@ public class FoodTruckApp {
 				return exitArr;
 			} else {
 				System.out.println("Enter type of food:");
-				foodType = sc.nextLine();
+				String foodType = sc.nextLine();
 
 				do {
 					System.out.println("Enter rating \"0-5\"");

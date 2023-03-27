@@ -2,6 +2,7 @@
 
 
 #Overview
+
 In the FoodTruckProject the user enters in information on food trucks
 such as name, type of food, and their rating.<br> each truck is then given its own
 unique numerical identification number. the user may instead type quit and exit
@@ -13,7 +14,7 @@ their average rating, and the highest rating of all trucks entered.
 or end the program.
 
 #Technologies
-<br>
+
 -eclipse
 <br>
 -java-OOP
@@ -22,6 +23,8 @@ or end the program.
 
 
 #Lessons Learned
+
+
 -working with non-static methods<br>
 -creating objects utilizing constructors and getters<br>
 -using toString<br>

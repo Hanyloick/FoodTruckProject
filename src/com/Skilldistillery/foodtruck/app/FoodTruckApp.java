@@ -34,7 +34,6 @@ public class FoodTruckApp {
 		for (int i = 0; i < fleet.length; i++) {
 			System.out.println("Enter names or \"quit\" to stop entering trucks:");
 			String truckName = sc.nextLine();
-//If the user inputs quit for the food truck name, input ends immediately and the program continues.
 			if (truckName.equalsIgnoreCase("quit")) {
 				FoodTruck[] exitArr = copyFleet(fleet);
 //				FoodTruck[] exitArr = Arrays.copyOf(fleet, i);// <----if user quits return the current copy of the []
